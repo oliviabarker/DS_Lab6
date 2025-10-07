@@ -21,13 +21,13 @@ public class PaintBrush
 	Paint Gold = new PaintColor(Color.GOLD);
 	Paint White = new PaintColor(Color.WHITE);
 	
-	
+
 /**
 set the "paint" for the paintbrush
 */	
 	public void setPaint(Paint paint)
 	{
-   
+		this.paint = paint;
    
 	}
 
@@ -37,7 +37,7 @@ set the "paint" for the paintbrush
 */
 	public Paint getPaint()
 	{
-		return Gold;
+		return this.paint;
 	}
 	
    
@@ -46,7 +46,8 @@ set the "paint" for the paintbrush
    */
 	public void setBrighter()
 	{		
-
+		Paint brighter = new PaintBrighter(this.paint);
+		this.paint = new PaintColor(brighter.getColor());
 	}
 
 
@@ -55,7 +56,8 @@ set the "paint" for the paintbrush
    */
 	public void setDarker()
 	{
-		
+		Paint darker = new PaintDarker(this.paint);
+		this.paint = new PaintColor(darker.getColor());
 	}
 
 
@@ -64,7 +66,10 @@ set the "paint" for the paintbrush
    */
 	public void paint(int x, int y, Paint[][] mesh)
 	{
-		
+		if (mode==BrushMode.paintMode)
+		{
+			mesh[x][y]=this.getPaint();
+		}
 	}
 
 	
