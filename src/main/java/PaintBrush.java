@@ -102,24 +102,31 @@ set the "paint" for the paintbrush
 			}
 			else
 			{
+				//if (current.equals(White)) 
+				//{
+				//	mesh[tempx][tempy]=this.Gold;
+				//}
+				//else
+				//{
 				mesh[tempx][tempy]=this.White;
+				//}
 			}
-			if (mesh[tempx+1][tempy].equals(current))
+			if (tempx+1>=0 && tempy>=0 && tempx+1<mesh.length && tempy<mesh[0].length && mesh[tempx+1][tempy].equals(current))
 			{
 				stackx.push(tempx+1);
 				stacky.push(tempy);
 			}
-			else if (mesh[tempx-1][tempy].equals(current))
+			if (tempx-1>=0 && tempy>=0 && tempx-1<mesh.length && tempy<mesh[0].length && mesh[tempx-1][tempy].equals(current))
 			{
 				stackx.push(tempx-1);
 				stacky.push(tempy);
 			}
-			else if (mesh[tempx][tempy+1].equals(current))
+			if (tempx>=0 && tempy+1>=0 && tempx<mesh.length && tempy+1<mesh[0].length && mesh[tempx][tempy+1].equals(current))
 			{
 				stackx.push(tempx);
 				stacky.push(tempy+1);
 			}
-			else if (mesh[tempx][tempy-1].equals(current))
+			if (tempx>=0 && tempy-1>=0 && tempx<mesh.length && tempy-1<mesh[0].length && mesh[tempx][tempy-1].equals(current))
 			{
 				stackx.push(tempx);
 				stacky.push(tempy-1);
@@ -132,7 +139,7 @@ set the "paint" for the paintbrush
 	
 	public void pattern1(int x, int y, Paint[][] mesh, Paint current, boolean bool)
 	{
-		if (!mesh[x][y].equals(current) || mesh[x][y].equals(this.paint))
+		if (x<0 || y<0 || x>=mesh.length || y>=mesh[0].length || !mesh[x][y].equals(current) || mesh[x][y].equals(this.paint))
 		{
 			return;
 		}
@@ -161,7 +168,7 @@ set the "paint" for the paintbrush
 //make sure check for in domain later	
 	public void fill(int x, int y, Paint[][] mesh, Paint current)
 	{
-		if (!mesh[x][y].equals(current) || mesh[x][y].equals(this.paint))
+		if (x<0 || y<0 || x>=mesh.length || y>=mesh[0].length || !mesh[x][y].equals(current) || mesh[x][y].equals(this.paint))
 		{
 			return;
 		}
